@@ -1,0 +1,18 @@
+#!/usr/bin/with-contenv bash
+
+PACKAGES="clickhouse-common-static=${CLICKHOUSE_VERSION} clickhouse-client=${CLICKHOUSE_VERSION}"
+if [ -z ${CLICKHOUSE_VERSION+x} ]; then
+    PACKAGES="clickhouse-common-static clickhouse-client"
+fi
+
+# Ubuntu
+if [ -f /usr/bin/apt ]; then
+    DEBIAN_FRONTEND="noninteractive"
+    apt-get install -y --no-install-recommends ${PACKAGES}
+fi
+
+# Alpine
+if [ -f /sbin/apk ]; then
+    echo "**** Not supported for alpine ****"
+fi
+# TODO: install using tar balls for alpine
