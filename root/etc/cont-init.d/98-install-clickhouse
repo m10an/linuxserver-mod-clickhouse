@@ -1,5 +1,6 @@
 #!/usr/bin/with-contenv bash
 
+echo "**** Installing ClickHouse ****"
 PACKAGES="clickhouse-common-static=${CLICKHOUSE_VERSION} clickhouse-client=${CLICKHOUSE_VERSION}"
 if [ -z ${CLICKHOUSE_VERSION+x} ]; then
     PACKAGES="clickhouse-common-static clickhouse-client"
